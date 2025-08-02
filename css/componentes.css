@@ -67,6 +67,9 @@
   justify-content: center;
 }
 
+.botoes-coloridos a:hover {
+  transform: scale(1.02);
+}
 .lista-livros li {
   margin-bottom: 10px;
 }
@@ -140,4 +143,5 @@ footer {
   max-width: 100%;
   margin: 20px auto;
   border: 2px solid #444;
+
 }
