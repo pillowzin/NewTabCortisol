@@ -1,0 +1,12 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1A1A1A;
+  color: #F8F8F2;
+  font-family: monospace;
+}
