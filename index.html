@@ -8,6 +8,16 @@
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/componentes.css" />
   <link rel="stylesheet" href="css/tema.css" />
+
+<!-- jQuery (necessário pro Chessboard antigo) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- CSS do Chessboard -->
+<link rel="stylesheet" href="js/libs/chessboard.min.css">
+<!-- JS do Chessboard -->
+<script src="js/libs/chessboard.min.js"></script>
+<!-- Seu script principal -->
+<script type="module" src="js/main.js"></script>
+
 </head>
 <body>
   <header class="cabecalho">
@@ -54,14 +64,19 @@
       </div>
 
       <div class="lista-livros">
+        <div id="pdf-container">
         <h3>📚 Biblioteca</h3>
         <ul>
-          <li><a href="#" onclick="abrirPDF('pdfs/Jeremy_Silman/how_to_reassess_your_chess.pdf')">How to Reassess Your Chess — Silman</a></li>
-          <li><a href="#" onclick="abrirPDF('pdfs/Jeremy_Silman/complete_endgame_course.pdf')">Complete Endgame Course — Silman</a></li>
-          <li><a href="#" onclick="abrirPDF('pdfs/Vukovic/the_art_of_atacking_in_chess.pdf')">The Art of Attack in Chess — Vukovic</a></li>
-          <li><a href="#" onclick="abrirPDF('pdfs/Gaprindashivili/imagination_in_chess.pdf')">Imagination in Chess — Gaprindashivili</a></li>
+          <li><a href="pdfs/Jeremy_Silman/how_to_reassess_your_chess.pdf" onclick="abrirPDF('pdfs/Jeremy_Silman/how_to_reassess_your_chess.pdf')">How to Reassess Your Chess — Silman</a></li>
+
+          <li><a href="pdfs/Jeremy_Silman/complete_endgame_course.pdf" onclick="abrirPDF('pdfs/Jeremy_Silman/complete_endgame_course.pdf')">Complete Endgame Course — Silman</a></li>
+
+          <li><a href="pdfs/Vukovic/the_art_of_atacking_in_chess.pdf" onclick="abrirPDF('pdfs/Vukovic/the_art_of_atacking_in_chess.pdf')">The Art of Attack in Chess — Vukovic</a></li>
+
+          <li><a href="pdfs/Gaprindashivili/imagination_in_chess.pdf" onclick="abrirPDF('pdfs/Gaprindashivili/imagination_in_chess.pdf')">Imagination in Chess — Gaprindashivili</a></li>
         </ul>
-      </div>
+       </div>
+     </div>
     </section>
 
     <!-- Coluna Direita -->
@@ -83,27 +98,20 @@
     </section>
   </main>
 
-  <section class="versiculos">
-    <div class="caixas-inicio">
-      <h2>Posição Inicial: Reconhecer quem você é</h2>
-      <h3 class='versiculo'>“Bem-aventurados os pobres de espírito, porque deles é o Reino dos céus.” — Mateus 5:3</h3>
-      <p>Você é limitado, fraco, propenso a cair.<br>Mas também é escolhido, amado e chamado pra avançar.</p>
+<section>
+  <div>
+    <div id="estudo-container" style="display: flex; gap: 16px;">
+      <!--pdf abre aqui-->
     </div>
 
-    <div class="caixas-inicio">
-      <h2>Movimento Diário</h2>
-      <h3 class='versiculo'>“Basta a cada dia o seu próprio mal.” — Mateus 6:34</h3>
-      <ul>
-        <li>Uma oração sincera</li>
-        <li>Um versículo meditado</li>
-        <li>Um pensamento limpo</li>
-        <li>Um treino mesmo que leve</li>
-        <li>Um "não" pra tentação</li>
-      </ul>
+    <div id="chessboard" style="flex: 1;">
+      <!--tabuleiro-->
     </div>
-  </section>
 
-  <section id="versiculoAleatorio"></section>
+  </div>
+</section>
+
+  <section class="versiculos" id="versiculoAleatorio"></section>
 
   <footer class="rodape">
     <p>Feito com fé e café por Jacob ✝️</p>
@@ -111,11 +119,6 @@
 
   <iframe id="iframePDF" style="width:100%; height:500px; border:none; display:none; margin-top: 20px;"></iframe>
 
-  <script src="js/main.js"></script>
-  <script src="js/relogio.js"></script>
-  <script src="js/boasVindas.js"></script>
-  <script src="js/pesquisa.js"></script>
-  <script src="js/notas.js"></script>
-  <script src="js/metas.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -126,3 +126,18 @@ footer {
   padding: 10px;
   margin-top: 40px;
 }
+
+#estudo-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 20px;
+}
+
+#chessboard {
+  width: 280px !important;
+  height: 280px !important;
+  max-width: 100%;
+  margin: 20px auto;
+  border: 2px solid #444;
+}

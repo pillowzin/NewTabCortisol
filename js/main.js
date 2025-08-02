@@ -6,9 +6,16 @@ import './notas.js';
 import './metas.js';
 import './versiculos.js'
 
-function abrirPDF(caminho) {
-  const iframe = document.getElementById("iframePDF");
-  iframe.src = caminho;
-  iframe.style.display = "block";
+function abrirPDF(pdfPath) {
+  const pdfContainer = document.getElementById('pdf-container');
+  pdfContainer.innerHTML = `
+    <iframe src="${pdfPath}" width="100%" height="500px" style="border: none;"></iframe>
+  `;
 }
-window.abrirPDF = abrirPDF;
+
+const board = Chessboard('chessboard', {
+  draggable: true,
+  dropOffBoard: 'snapback',
+  position: 'start',
+  pieceTheme: 'js/libs/img/chesspieces/{piece}.png'
+});
