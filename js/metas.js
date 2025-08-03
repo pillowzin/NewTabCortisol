@@ -50,3 +50,4 @@ function removerMeta(index) {
 }
 
 document.addEventListener("DOMContentLoaded", renderizarMetas);
+export { adicionarMeta, alterarMeta, removerMeta };

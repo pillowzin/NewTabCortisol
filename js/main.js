@@ -4,6 +4,13 @@ import './boasVindas.js';
 import './pesquisa.js';
 import './notas.js';
 import './metas.js';
+import { adicionarMeta, alterarMeta, removerMeta } from './metas.js';
+
+// Expõe no escopo global para funcionar com onclick
+window.adicionarMeta = adicionarMeta;
+window.alterarMeta = alterarMeta;
+window.removerMeta = removerMeta;
+
 import './versiculos.js'
 
 function abrirPDF(pdfPath) {
