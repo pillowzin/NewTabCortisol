@@ -1,0 +1,31 @@
+.caixas-inicio {
+  background-color: #262626;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 6px 6px 0 #000;
+  border: 2px solid #AAAAAA;
+  max-width: 400px;
+  flex: 1;
+}
+
+.caixas-inicio h2,
+.caixas-inicio h3,
+.caixas-inicio h4 {
+  color: #f9d68a;
+}
+
+.caixas-inicio p,
+.caixas-inicio ul {
+  color: rgb(253, 165, 77);
+}
+
+.versiculo {
+  font-style: italic;
+  color: #ff0084;
+  background-color: #333;
+  border-left: 4px solid #FFCC00;
+  padding: 4px 8px;
+  margin: 4px 0 8px 0;
+  display: inline-block;
+  font-size: 15px;
+}

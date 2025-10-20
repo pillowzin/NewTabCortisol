@@ -1,0 +1,25 @@
+.grid-principal {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 900px) {
+  .grid-principal {
+    grid-template-columns: 1fr;
+  }
+}
+
+#debt-tracker {
+  margin-bottom: 20px;
+}
+
+#estudo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+}

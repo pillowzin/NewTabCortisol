@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>< - Nova Aba - ></title>
+  <link rel="icon" href="misc/icon-page.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/componentes.css" />
+  <link rel="stylesheet" href="css/tema.css" />
+
+  <!-- jQuery (necessário pro Chessboard antigo) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- CSS do Chessboard -->
+  <link rel="stylesheet" href="js/libs/chessboard.min.css">
+  <!-- JS do Chessboard -->
+  <script src="js/libs/chessboard.min.js"></script>
+</head>
+
+<body>
+  <header class="cabecalho">
+    <h2 id="bemvindoTexto" class="mensagem-bemvindo"></h2>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Pesquisar no Google..." />
+  </div>
+
+  <div class="widget-container">
+    <span id="horaAtual"></span> | <span id="dataAtual"></span>
+  </div>
+
+  <main class="grid-principal">
+    <!-- Coluna Esquerda -->
+    <section class="coluna-esquerda">
+      <div class="bloco-links">
+        <h3>Favoritos</h3>
+        <div class="botoes-coloridos">
+          <a href="https://youtube.com" style="background-color:#FF0000;">YouTube</a>
+          <a href="https://chat.openai.com" style="background-color:#10A37F;">ChatGPT</a>
+          <a href="https://lichess.org" style="background-color:#111;">Lichess</a>
+          <a href="https://chess.com" style="background-color:#6A994E;">Chess.com</a>
+          <a href="https://www.bibliaonline.com.br" style="background-color:#8A2BE2;">Bíblia Online</a>
+        </div>
+
+        <h3>Redes Sociais</h3>
+        <div class="botoes-coloridos">
+          <a href="https://instagram.com" style="background-color:#E1306C;">Instagram</a>
+          <a href="https://web.whatsapp.com/" style="background-color:#25D366;">WhatsApp</a>
+          <a href="https://discord.com/channels/@me" style="background-color:#5865F2;">Discord</a>
+          <a href="https://facebook.com" style="background-color:#1877F2;">Facebook</a>
+        </div>
+
+        <h3>Utilitários</h3>
+        <div class="botoes-coloridos">
+          <a href="https://www.canva.com" style="background-color:#00C4CC;">Canva</a>
+          <a href="https://docs.google.com" style="background-color:#4285F4;">Docs</a>
+          <a href="https://github.com" style="background-color:#171515;">GitHub</a>
+          <a href="https://open.spotify.com" style="background-color:#1DB954;">Spotify</a>
+        </div>
+
+        <!-- Versículos -->
+      <section class="versiculos">
+        <div id="versiculoAleatorio"></div>
+      </section>
+
+      </div>
+    </section>
+
+    <!-- Coluna Direita -->
+    <section class="coluna-direita">
+      <!-- Metas -->
+      <section class="painel-metas">
+        <h2>📘 Suas Metas</h2>
+        <div id="lista-metas"></div>
+
+        <div class="nova-meta">
+          <input type="text" id="nomeMeta" placeholder="Nome da meta" />
+          <input type="number" id="valorMaximo" placeholder="Valor máximo" />
+          <button onclick="adicionarMeta()">➕</button>
+        </div>
+      </section>
+
+      <!-- Bloco de Notas -->
+      <section class="bloco-notas">
+        <h2>📝 Bloco de Notas</h2>
+        <textarea id="bloco-textarea" placeholder="Escreva suas anotações aqui..."></textarea>
+      </section>
+
+      <!-- Tabuleiro -->
+      <section class="bloco-xadrez">
+        <h2 style="text-align: center;">♟️ Tabuleiro</h2>
+        <div id="chessboard"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Feito com fé e café por Jacob ✝️</p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
