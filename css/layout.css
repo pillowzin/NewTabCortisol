@@ -1,25 +1,43 @@
+.pagina {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+
+.hero {
+  text-align: center;
+  padding: 56px 0 32px;
+}
+
+.saudacao { color: var(--muted); font-size: 16px; margin-bottom: 4px; }
+
+.hora {
+  font-size: clamp(56px, 9vw, 92px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.data { color: var(--muted); text-transform: capitalize; margin-top: 8px; }
+
 .grid-principal {
   display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 20px;
-  padding: 20px;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 24px;
+  align-items: start;
 }
 
-@media (max-width: 900px) {
-  .grid-principal {
-    grid-template-columns: 1fr;
-  }
+.coluna-esquerda { display: flex; flex-direction: column; gap: 28px; }
+.coluna-direita { display: flex; flex-direction: column; gap: 20px; }
+
+.rodape {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 48px;
 }
 
-#debt-tracker {
-  margin-bottom: 20px;
-}
-
-#estudo-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 10px;
+@media (max-width: 960px) {
+  .grid-principal { grid-template-columns: 1fr; }
 }

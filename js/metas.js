@@ -1,80 +1,95 @@
-let metas = JSON.parse(localStorage.getItem("metas")) || [];
+(function () {
+  // Mesma chave de antes, então suas metas atuais continuam aparecendo
+  let metas = [];
+  try { metas = JSON.parse(localStorage.getItem("metas")) || []; } catch (e) { metas = []; }
 
-function salvarMetas() {
-  localStorage.setItem("metas", JSON.stringify(metas));
-}
+  const lista = document.getElementById("lista-metas");
+  const inputNome = document.getElementById("nomeMeta");
+  const inputTotal = document.getElementById("valorMaximo");
 
-function renderizarMetas() {
-  const container = document.getElementById("lista-metas");
-  container.innerHTML = "";
+  const ICONE_LIXO =
+    '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/></svg>';
 
-  metas.forEach((meta, index) => {
-    const progressoPercent = Math.min((meta.progresso / meta.total) * 100, 100);
+  function salvar() { localStorage.setItem("metas", JSON.stringify(metas)); }
 
-    const div = document.createElement("div");
-    div.className = "meta-item";
-    div.innerHTML = `
-      <strong>${meta.nome}</strong><br>
-      <small>${meta.progresso} / ${meta.total}</small>
-
-      <div class="progress-bar">
-        <div class="progress-fill"></div>
-      </div>
-
-      <div class="buttons">
-        <button onclick="alterarMeta(${index}, 10)">+10</button>
-        <button onclick="alterarMeta(${index}, 20)">+20</button>
-        <button onclick="alterarMeta(${index}, 50)">+50</button>
-        <button onclick="alterarMeta(${index}, -10)">-10</button>
-        <button onclick="alterarMeta(${index}, -20)">-20</button>
-      </div>
-
-      <button class="delete" onclick="removerMeta(${index})">🗑️ Apagar</button>
-    `;
-    container.appendChild(div);
-
-    // 💫 Força a animação acontecer após inserção
-    const fill = div.querySelector(".progress-fill");
-    setTimeout(() => {
-      fill.style.width = `${progressoPercent}%`;
-      if (progressoPercent >= 100) fill.classList.add("complete");
-      else fill.classList.remove("complete");
-    }, 50);
-  });
-}
-
-function adicionarMeta() {
-  const nome = document.getElementById("nomeMeta").value.trim();
-  const total = parseInt(document.getElementById("valorMaximo").value);
-  if (!nome || isNaN(total) || total <= 0) return;
-
-  metas.push({ nome, total, progresso: 0 });
-  salvarMetas();
-  renderizarMetas();
-
-  document.getElementById("nomeMeta").value = "";
-  document.getElementById("valorMaximo").value = "";
-}
-
-function alterarMeta(index, valor) {
-  if (!metas[index]) return;
-
-  metas[index].progresso = Math.max(0, Math.min(metas[index].total, metas[index].progresso + valor));
-  salvarMetas();
-  renderizarMetas();
-
-  if (metas[index].progresso >= metas[index].total) {
-    alert(`🔥 Meta "${metas[index].nome}" concluída!`);
+  function botao(texto, aoClicar, classe) {
+    const b = document.createElement("button");
+    if (classe) b.className = classe;
+    b.textContent = texto;
+    b.addEventListener("click", aoClicar);
+    return b;
   }
-}
 
-function removerMeta(index) {
-  if (confirm("Tem certeza que quer apagar essa meta?")) {
-    metas.splice(index, 1);
-    salvarMetas();
-    renderizarMetas();
+  function alterar(i, valor) {
+    const m = metas[i];
+    if (!m) return;
+    m.progresso = Math.max(0, Math.min(m.total, m.progresso + valor));
+    salvar();
+    renderizar();
   }
-}
 
-document.addEventListener("DOMContentLoaded", renderizarMetas);
-export { adicionarMeta, alterarMeta, removerMeta };
+  function remover(i) {
+    if (!confirm("Tem certeza que quer apagar essa meta?")) return;
+    metas.splice(i, 1);
+    salvar();
+    renderizar();
+  }
+
+  function renderizar() {
+    lista.innerHTML = "";
+    metas.forEach((m, i) => {
+      const pct = Math.min((m.progresso / m.total) * 100, 100);
+
+      const item = document.createElement("div");
+      item.className = "meta-item" + (pct >= 100 ? " concluida" : "");
+
+      const topo = document.createElement("div");
+      topo.className = "meta-topo";
+      const nome = document.createElement("strong");
+      nome.textContent = m.nome;
+      const contador = document.createElement("small");
+      contador.textContent = m.progresso + " / " + m.total;
+      topo.append(nome, contador);
+
+      const barra = document.createElement("div");
+      barra.className = "progress-bar";
+      const fill = document.createElement("div");
+      fill.className = "progress-fill";
+      barra.appendChild(fill);
+
+      const acoes = document.createElement("div");
+      acoes.className = "meta-acoes";
+      [10, 20, 50, -10, -20].forEach((v) =>
+        acoes.appendChild(botao((v > 0 ? "+" : "−") + Math.abs(v), () => alterar(i, v)))
+      );
+      const lixo = botao("", () => remover(i), "apagar");
+      lixo.innerHTML = ICONE_LIXO;
+      lixo.setAttribute("aria-label", "Apagar meta");
+      acoes.appendChild(lixo);
+
+      item.append(topo, barra, acoes);
+      lista.appendChild(item);
+
+      // anima a barra depois de inserida
+      requestAnimationFrame(() => { fill.style.width = pct + "%"; });
+    });
+  }
+
+  function adicionar() {
+    const nome = inputNome.value.trim();
+    const total = parseInt(inputTotal.value, 10);
+    if (!nome || isNaN(total) || total <= 0) return;
+    metas.push({ nome, total, progresso: 0 });
+    salvar();
+    renderizar();
+    inputNome.value = "";
+    inputTotal.value = "";
+  }
+
+  document.getElementById("btnAddMeta").addEventListener("click", adicionar);
+  [inputNome, inputTotal].forEach((el) =>
+    el.addEventListener("keydown", (e) => { if (e.key === "Enter") adicionar(); })
+  );
+
+  renderizar();
+})();

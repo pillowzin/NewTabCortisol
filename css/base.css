@@ -1,36 +1,27 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --bg: #0e1014;
+  --card: #171a21;
+  --card-2: #1d212a;
+  --line: #262b36;
+  --line-2: #343a48;
+  --text: #e9ebf1;
+  --muted: #8c94a8;
+  --accent: #f5c451;
+  --ok: #4ade80;
+  --radius: 16px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  background-color: #1A1A1A;
-  color: #F8F8F2;
-  font-family: monospace;
-}
-.bloco-links,
-.lista-livros,
-.bloco-notas,
-.painel-metas,
-.versiculo-dentro {
-  background: #1b1b1b;
-  border: 2px solid #555;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 4px 4px 0 #000;
-  margin-bottom: 20px;
-  transition: transform 0.2s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 420px at 50% -120px, rgba(245, 196, 81, 0.09), transparent),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.5;
 }
 
-.bloco-links:hover,
-.lista-livros:hover,
-.bloco-notas:hover,
-.painel-metas:hover,
-.versiculo-dentro:hover {
-  border-color: #FFD700;
-  transform: translateY(-2px);
-  box-shadow: 6px 6px 0 #000, 0 0 10px rgba(255, 215, 0, 0.2);
-}
-
+button, input, textarea { font-family: inherit; }
