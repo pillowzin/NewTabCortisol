@@ -1,5 +1,6 @@
 // Edite aqui para adicionar, remover ou reordenar links.
 const DESTAQUES = [
+  { nome: "YouTube",   url: "https://youtube.com",        cor: "#ff0000" },
   { nome: "YouTube Music", desc: "Sua música",       url: "https://music.youtube.com", cor: "#ff0033" },
   { nome: "Claude",        desc: "Assistente de IA", url: "https://claude.ai",         cor: "#d97757" },
 ];
@@ -8,7 +9,6 @@ const GRUPOS = [
   {
     titulo: "Favoritos",
     itens: [
-      { nome: "YouTube",   url: "https://youtube.com",        cor: "#ff0000" },
       { nome: "GitHub",    url: "https://github.com",         cor: "#8b949e" },
       { nome: "Chess.com", url: "https://chess.com",          cor: "#81b64c" },
       { nome: "Lichess",   url: "https://lichess.org",        cor: "#d9d9d9" },
