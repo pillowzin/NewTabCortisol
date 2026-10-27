@@ -1,7 +1,8 @@
 // Edite aqui para adicionar, remover ou reordenar links.
 const DESTAQUES = [
-  { nome: "YouTube",   url: "https://youtube.com",        cor: "#ff0000" },
+  { nome: "YouTube",  desc: "Videos",   url: "https://youtube.com",        cor: "#ff0000" },
   { nome: "YouTube Music", desc: "Sua música",       url: "https://music.youtube.com", cor: "#ff0033" },
+  { nome: "ChatGPT",  desc: "Assistente de IA",   url: "https://chatgpt.com",        cor: "#10a37f" },
   { nome: "Claude",        desc: "Assistente de IA", url: "https://claude.ai",         cor: "#d97757" },
 ];
 
@@ -13,7 +14,7 @@ const GRUPOS = [
       { nome: "Chess.com", url: "https://chess.com",          cor: "#81b64c" },
       { nome: "Lichess",   url: "https://lichess.org",        cor: "#d9d9d9" },
       { nome: "Songsterr", url: "https://www.songsterr.com/", cor: "#38b0de" },
-      { nome: "ChatGPT",   url: "https://chatgpt.com",        cor: "#10a37f" },
+      
     ],
   },
   {
@@ -23,6 +24,13 @@ const GRUPOS = [
       { nome: "Facebook",  url: "https://facebook.com",                 cor: "#1877f2" },
       { nome: "Discord",   url: "https://discord.com/channels/@me",     cor: "#5865f2" },
       { nome: "WhatsApp",  url: "https://web.whatsapp.com/",            cor: "#25d366" },
+    ],
+  },
+  {
+    titulo: "Estudos",
+    itens: [
+      { nome: "DIO",   url: "https://web.dio.me/track/bootcamp-santander-ciberseguranca-do-zero-a-pratica",     cor: "#5865f2" },
+      { nome: "Duolingo",  url: "https://www.duolingo.com/learn",            cor: "#00FF00" },
     ],
   },
 ];
